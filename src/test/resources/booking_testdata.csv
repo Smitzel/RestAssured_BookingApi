@@ -1,0 +1,5 @@
+firstname,lastname,totalprice,depositpaid,checkin,checkout,additionalneeds
+Marcel, King,123,true,2025-01-01,2025-04-01,food
+Jan,Keizer,456,false,2025-02-01,2025-03-01,beer
+Piet,Hein,789,true,2025-03-01,2025-02-01,wine
+Klaas,Vaak,1234,false,2025-04-01,2025-03-01,fries
