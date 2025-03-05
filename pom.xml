@@ -19,7 +19,7 @@
         <json-simple.version>1.1.1</json-simple.version>
         <datafaker.version>2.4.2</datafaker.version>
         <json.version>20250107</json.version>
-        <slf4j.version>2.0.16</slf4j.version>
+        <slf4j.version>2.0.17</slf4j.version>
     </properties>
 
     <dependencies>
