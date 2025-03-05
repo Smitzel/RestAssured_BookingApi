@@ -11,6 +11,7 @@ import static io.restassured.RestAssured.*;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.Matchers.*;
 
+
 public class BookingTests extends TestConfigBookingApi {
 
     @Test

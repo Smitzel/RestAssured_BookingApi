@@ -10,9 +10,10 @@ import org.junit.jupiter.api.*;
 import utils.TestData;
 
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.Matchers.equalTo;
 import static utils.TestVariableManager.GetVariable;
 import static utils.TestVariables.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CrudTests extends TestConfigBookingApi {
 
@@ -37,8 +38,8 @@ public class CrudTests extends TestConfigBookingApi {
         String firstNameGet = getBooking.jsonPath().getString("firstname");
         String lastNameGet = getBooking.jsonPath().getString("lastname");
 
-        Assertions.assertEquals(firstNamePost, firstNameGet);
-        Assertions.assertEquals(lastNamePost, lastNameGet);
+        assertEquals(firstNamePost, firstNameGet);
+        assertEquals(lastNamePost, lastNameGet);
 
         //    Get Token
         Response getToken = given()
@@ -67,14 +68,14 @@ public class CrudTests extends TestConfigBookingApi {
                 .get("booking/" + bookingId);
 
         String firstNamePatched = getBookingAfterPatch.jsonPath().getString("firstname");
-        Assertions.assertEquals(newName, firstNamePatched);
+        assertEquals(newName, firstNamePatched);
 
 
         //  PUT the booking and update all fields
         Booking updateBooking = new Booking();
         String updateFirstNamePost = updateBooking.getFirstname();
         String updateLastNamePost = updateBooking.getLastname();
-        Response putBooking = given()
+        given()
                 .header("Cookie", "token=" + token)
                 .when()
                 .body(updateBooking)
@@ -88,8 +89,8 @@ public class CrudTests extends TestConfigBookingApi {
         String firstNameGetUpdate = getUpdateBooking.jsonPath().getString("firstname");
         String lastNameGetUpdate = getUpdateBooking.jsonPath().getString("lastname");
 
-        Assertions.assertEquals(firstNameGetUpdate, updateFirstNamePost);
-        Assertions.assertEquals(lastNameGetUpdate, updateLastNamePost);
+        assertEquals(firstNameGetUpdate, updateFirstNamePost);
+        assertEquals(lastNameGetUpdate, updateLastNamePost);
 
         //    DELETE the booking
         given()
@@ -113,30 +114,30 @@ public class CrudTests extends TestConfigBookingApi {
         BookingHelper.createBooking();
         BookingHelper.getBooking(200);
 
-        Assertions.assertEquals(GetVariable(POST_FIRSTNAME), GetVariable(GET_FIRSTNAME));
-        Assertions.assertEquals(GetVariable(POST_LASTNAME), GetVariable(GET_LASTNAME));
-        Assertions.assertEquals(GetVariable(POST_TOTALPRICE), GetVariable(GET_TOTALPRICE));
-        Assertions.assertEquals(GetVariable(POST_DEPOSITPAID), GetVariable(GET_DEPOSITPAID));
-        Assertions.assertEquals(GetVariable(POST_CHECKIN), GetVariable(GET_CHECKIN));
-        Assertions.assertEquals(GetVariable(POST_CHECKOUT), GetVariable(GET_CHECKOUT));
-        Assertions.assertEquals(GetVariable(POST_ADDITIONALNEEDS), GetVariable(GET_ADDITIONALNEEDS));
+        assertEquals(GetVariable(POST_FIRSTNAME), GetVariable(GET_FIRSTNAME));
+        assertEquals(GetVariable(POST_LASTNAME), GetVariable(GET_LASTNAME));
+        assertEquals(GetVariable(POST_TOTALPRICE), GetVariable(GET_TOTALPRICE));
+        assertEquals(GetVariable(POST_DEPOSITPAID), GetVariable(GET_DEPOSITPAID));
+        assertEquals(GetVariable(POST_CHECKIN), GetVariable(GET_CHECKIN));
+        assertEquals(GetVariable(POST_CHECKOUT), GetVariable(GET_CHECKOUT));
+        assertEquals(GetVariable(POST_ADDITIONALNEEDS), GetVariable(GET_ADDITIONALNEEDS));
 
         AuthHelper.getAuthToken();
         BookingHelper.patchBooking();
         BookingHelper.getBooking(200);
 
-        Assertions.assertEquals(GetVariable(PATCH_FIRSTNAME), GetVariable(GET_FIRSTNAME));
+        assertEquals(GetVariable(PATCH_FIRSTNAME), GetVariable(GET_FIRSTNAME));
 
         BookingHelper.putBooking();
         BookingHelper.getBooking(200);
 
-        Assertions.assertEquals(GetVariable(PUT_FIRSTNAME), GetVariable(GET_FIRSTNAME));
-        Assertions.assertEquals(GetVariable(PUT_LASTNAME), GetVariable(GET_LASTNAME));
-        Assertions.assertEquals(GetVariable(PUT_TOTALPRICE), GetVariable(GET_TOTALPRICE));
-        Assertions.assertEquals(GetVariable(PUT_DEPOSITPAID), GetVariable(GET_DEPOSITPAID));
-        Assertions.assertEquals(GetVariable(PUT_CHECKIN), GetVariable(GET_CHECKIN));
-        Assertions.assertEquals(GetVariable(PUT_CHECKOUT), GetVariable(GET_CHECKOUT));
-        Assertions.assertEquals(GetVariable(PUT_ADDITIONALNEEDS), GetVariable(GET_ADDITIONALNEEDS));
+        assertEquals(GetVariable(PUT_FIRSTNAME), GetVariable(GET_FIRSTNAME));
+        assertEquals(GetVariable(PUT_LASTNAME), GetVariable(GET_LASTNAME));
+        assertEquals(GetVariable(PUT_TOTALPRICE), GetVariable(GET_TOTALPRICE));
+        assertEquals(GetVariable(PUT_DEPOSITPAID), GetVariable(GET_DEPOSITPAID));
+        assertEquals(GetVariable(PUT_CHECKIN), GetVariable(GET_CHECKIN));
+        assertEquals(GetVariable(PUT_CHECKOUT), GetVariable(GET_CHECKOUT));
+        assertEquals(GetVariable(PUT_ADDITIONALNEEDS), GetVariable(GET_ADDITIONALNEEDS));
 
         BookingHelper.deleteBooking();
         BookingHelper.getBooking(404);
