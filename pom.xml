@@ -13,7 +13,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <rest-assured.version>5.5.1</rest-assured.version>
-        <junitjupiter.version>5.12.0</junitjupiter.version>
+        <junit.jupiter.version>5.12.2</junit.jupiter.version>
         <jackson-databind.version>2.13.4.1</jackson-databind.version>
         <json-schema-validator.version>4.5.0</json-schema-validator.version>
         <json-simple.version>1.1.1</json-simple.version>
@@ -22,6 +22,18 @@
         <slf4j.version>2.0.17</slf4j.version>
     </properties>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.junit</groupId>
+                <artifactId>junit-bom</artifactId>
+                <version>${junit.jupiter.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <dependencies>
         <dependency>
             <groupId>io.rest-assured</groupId>
@@ -29,17 +41,35 @@
             <version>${rest-assured.version}</version>
             <scope>test</scope>
         </dependency>
+
+        <!-- JUnit 5 (version via BOM) -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter</artifactId>
-            <version>${junitjupiter.version}</version>
+            <artifactId>junit-jupiter-api</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-suite</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-params</artifactId>
+            <scope>test</scope>
+        </dependency>
+
         <dependency>
             <groupId>com.googlecode.json-simple</groupId>
             <artifactId>json-simple</artifactId>
             <version>${json-simple.version}</version>
         </dependency>
+
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>json-schema-validator</artifactId>
@@ -76,7 +106,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
                     <source>23</source>
-                    <target>23</target><compilerArgs>--enable-preview</compilerArgs>
+                    <target>23</target>
+                    <compilerArgs>--enable-preview</compilerArgs>
                 </configuration>
             </plugin>
         </plugins>
