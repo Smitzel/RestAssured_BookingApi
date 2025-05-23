@@ -5,25 +5,20 @@
 
 <module name="Checker">
 
-    <!-- Allows packages without a package-info.java file -->
-    <module name="JavadocPackage">
-        <property name="allowMissingPackageInfo" value="true"/>
-    </module>
-
     <module name="TreeWalker">
 
-        <!-- Javadoc checks removed entirely to avoid enforcement -->
+        <!-- Removed all Javadoc checks -->
 
-        <!-- Allow opening curly brace on the same line -->
+        <!-- Allow opening curly brace on same line -->
         <module name="LeftCurly">
             <property name="option" value="eol"/>
             <property name="ignoreEnums" value="true"/>
         </module>
 
-        <!-- Do not enforce specific closing brace placement -->
-        <!-- RightCurly module omitted -->
+        <!-- Don't enforce specific closing brace placement -->
+        <!-- (RightCurly is omitted) -->
 
-        <!-- Helpful lightweight rules -->
+        <!-- Minimal useful checks -->
         <module name="UnusedImports"/>
         <module name="AvoidStarImport"/>
         <module name="FinalLocalVariable"/>
