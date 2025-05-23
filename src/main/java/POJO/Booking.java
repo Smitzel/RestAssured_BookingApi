@@ -2,8 +2,6 @@ package POJO;
 
 import utils.TestData;
 
-import java.util.Date;
-
 public class Booking {
     private String firstname;
     private String lastname;
