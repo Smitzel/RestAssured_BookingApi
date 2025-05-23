@@ -5,27 +5,27 @@
 
 <module name="Checker">
 
-    <!-- no package-info.java check -->
+    <!-- Schakel verplicht package-info.java bestand uit -->
     <module name="JavadocPackage">
         <property name="allowMissingPackageInfo" value="true"/>
     </module>
 
     <module name="TreeWalker">
 
-        <!-- no Javadoc checks -->
+        <!-- Verwijder alle verplichte Javadoc checks -->
         <module name="JavadocType" enabled="false"/>
         <module name="JavadocMethod" enabled="false"/>
         <module name="JavadocVariable" enabled="false"/>
         <module name="JavadocStyle" enabled="false"/>
 
-        <!-- newline rule off -->
+        <!-- Schakel newline-regel afgedwongen stijlregels uit -->
         <module name="LeftCurly">
             <property name="option" value="eol"/>
             <property name="ignoreEnums" value="true"/>
         </module>
         <module name="RightCurly" enabled="false"/>
 
-        <!-- Handy, mild checks -->
+        <!-- Handige, milde checks -->
         <module name="UnusedImports"/>
         <module name="AvoidStarImport"/>
         <module name="FinalLocalVariable"/>
