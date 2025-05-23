@@ -5,27 +5,28 @@
 
 <module name="Checker">
 
-    <!-- Schakel verplicht package-info.java bestand uit -->
+    <!-- Allow packages without package-info.java documentation -->
     <module name="JavadocPackage">
         <property name="allowMissingPackageInfo" value="true"/>
     </module>
 
     <module name="TreeWalker">
 
-        <!-- Verwijder alle verplichte Javadoc checks -->
+        <!-- Disable all required Javadoc comments -->
         <module name="JavadocType" enabled="false"/>
         <module name="JavadocMethod" enabled="false"/>
         <module name="JavadocVariable" enabled="false"/>
-        <module name="JavadocStyle" enabled="false"/>
 
-        <!-- Schakel newline-regel afgedwongen stijlregels uit -->
+        <!-- Allow left curly braces to be on the same line -->
         <module name="LeftCurly">
             <property name="option" value="eol"/>
             <property name="ignoreEnums" value="true"/>
         </module>
+
+        <!-- Disable enforcement of right curly brace style -->
         <module name="RightCurly" enabled="false"/>
 
-        <!-- Handige, milde checks -->
+        <!-- Keep only essential, helpful checks -->
         <module name="UnusedImports"/>
         <module name="AvoidStarImport"/>
         <module name="FinalLocalVariable"/>
