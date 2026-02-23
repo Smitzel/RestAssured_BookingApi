@@ -19,7 +19,7 @@
         <datafaker.version>2.5.4</datafaker.version>
         <json.version>20251224</json.version>
         <slf4j.version>2.0.17</slf4j.version>
-        <maven-surefire-plugin.version>3.5.4</maven-surefire-plugin.version>
+        <maven-surefire-plugin.version>3.5.5</maven-surefire-plugin.version>
         <maven-checkstyle-plugin.version>3.6.0</maven-checkstyle-plugin.version>
         <logback.version>1.5.31</logback.version>
     </properties>
